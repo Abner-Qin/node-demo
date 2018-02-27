@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>node特点</title>
+</head>
+<body>
+	<p style="font-size:20px;color:red;">Node的自身哲学花最小的硬件成本，追求更高的并发，更好的处理性能</p>
+	<p>Node本身运行V8 JavaScript。V8 JavaScript引擎是Google用于其Chrome浏览器的底层JavaScript引擎。</p>
+	<p>Google使用V8创建了一个用C++编写的超快解释器，该解释器拥有另一个独特特征：您可以下载该引擎并将其嵌入任何应用程序。V8 JavaScript引擎并不仅限于在一个浏览器中运行。因此，Node.js实际上会使用Google编写的V8 JavaScript引擎，并将其重建为可在服务器上使用。</p>
+	<p style="font-size:20px;color:red;">Node.js优点：</p>
+	<p>1、采用事件驱动、异步编程，为网络服务而设计。其实Javascript的匿名函数和闭包特性非常适合事件驱动、异步编程。而且JavaScript也简单易学，很多前端设计人员可以很快上手做后端设计。<br>
+	2、Node.js非阻塞模式的IO处理给Node.js带来在相对低系统资源耗用下的高性能与出众的负载能力，非常适合用作依赖其它IO资源的中间层服务。3、Node.js轻量高效，可以认为是数据密集型分布式部署环境下的实时应用系统的完美解决方案。Node非常适合如下情况：在响应客户端之前，您预计可能有很高的流量，但所需的服务器端逻辑和处理不一定很多。</p>
+	<p style="font-size:20px;color:red;">Node.js缺点：</p>
+	<p>1、可靠性低,更新不及时,遇到问题难以解决,复杂庞大，往往绑定了很多其他的功能，用户往往被绑架<br>
+	2、单进程，单线程，只支持单核CPU，不能充分的利用多核CPU服务器。一旦这个进程崩掉，那么整个web服务就崩掉了。</p>
+	<p style="font-size:20px;color:red;">Node的运行流程：其实三个特点是一个作用</p>
+	<p>node开始第一个特点单线程去执行，但是单线程是一个一个去执行的效率不高，所以开始第二个特点采用非阻塞IO，执行内容不会一直暂停下来等着而是立刻转到下一个任务去执行，当第一个任务的返回结果完成时，第三个特点事件驱动内部的事件队列和回调函数队列的构建发现有响应就立刻把响应反馈到用户</p>
+	<p style="font-size:20px;color:red;">Node的使用场景:例如</p>
+	<p>百度的表单</p>
+	<p>考试系统</p>
+	<p>聊天室</p>
+	<p>图文直播</p>
+	<p>提供json的api（为前台angular使用）</p>
+	<p>另外一些创业型（正处于A轮,B轮）的公司喜欢使用node做业务，因为效果比较炫酷</p>
+	<p style="font-size:20px;color:red;">因为Node就是极客追求性能极致的产物，缺少了很多服务器的健壮考量，所以node不可能引用在银行，证券，电信等极高可靠性的业务中</p>
+	<p>综上所述node就相当于工具箱里的一个工具和php，java等老牌语言没有可比性</p>
+</body>
+<script>
+	
+</script>
+</html>

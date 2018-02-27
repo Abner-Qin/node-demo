@@ -1,0 +1,1 @@
+console.log("hello node")//cmd窗口执行node index.js或者node index窗口执行完毕显示hello node

@@ -1,0 +1,152 @@
+安装node
+新建一个index.js 写入console.log("hello node")
+cmd窗口执行node index.js或者node index窗口执行完毕显示hello node
+node的应用由模块组成，采用commonJS模块规范
+
+CommonJs特点
+  一个文件就是一个模块，拥有单独的作用域；
+
+    普通方式定义的变量、函数、对象都属于该模块内；
+
+    通过require来加载模块；
+
+    通过exports和modul.exports来暴露模块中的内容；
+
+    所有代码都运行在模块作用域，不会污染全局作用域；模块可以多次加载，但只会在第一次加载的时候运行一次，然后运行结果就被缓存了，以后再加载，就直接读取缓存结果；模块的加载顺序，按照代码的出现顺序是同步加载的;
+
+例：创建comm1.js和comm2.js
+comm1.js
+let name="张三"
+// 变量、函数、其他模块是不能直接访问的
+// 公布出去(三种方法)
+module.exports.name="张三"
+exports.name1="李四"
+module.exports={
+	name:"zhangsan",
+	name1:"lisi"
+}
+comm2.js
+// require导入其他模块
+let comm1=require('./comm1.js')
+console.log(comm1.name)
+console.log(comm1.name1)
+窗口输入node comm2 下面的name和name1会覆盖上面的窗口打印出zhangsan lisi
+
+
+index.html为node的知识点
+index.js为执行node的第一个demo
+comm1,comm2为基础的外部调用
+urlsplit test为url字符串分割封装模版实例
+http,fs-url-querystring模块 为核心模块
+login文件夹和server.js为简单的模拟登录模版
+net模块模拟聊天室效果
+client 模拟浏览器发送请求
+
+nodejs核心模块
+Node核心模块之HTTP模块
+作用:
+    处理客户端的网络请求
+
+代码步骤:
+    1.导入 HTTP 核心模块
+    2.监听客户端的请求
+    3.处理客户端的请求
+    4.开启服务器
+
+
+Node核心模块之URL模块
+作用:
+    处理客户端请求过来的URL
+
+代码步骤:
+    1.导入 URL 核心模块
+    2.导入 HTTP 核心模块
+    3.监听客户端的请求
+    在这中间处理客户端请求过来的URL
+    4.处理客户端的请求
+    5.开启服务器        
+
+NodeJS核心模块之Query Strings模块
+作用:处理客户端通过`get/post`请求传递过来的参数
+
+使用关键点:
+    1.需要导入 'querystring' 这个核心模块
+    2.`get`请求时 querystring 一般是配合 url 核心模块一起使用的
+    3.`get/post`请求最终都需要调用 querystring.parse方法,
+    将请求传递过来的键值对字符串转成js对象,方便操作
+
+注意:
+    get/post的请求方式是不一样的,客户端传递过来时,参数放在
+    的地方是不一样的,所以服务器端处理方式也不太一样
+
+NodeJS核心模块之File System模块
+前提:以后的所有静态资源(html,css,js,图片等)都是放在服务端
+的,如果浏览器需要这些html,css,js,图片等资源,则需要先将其读
+取到node.exe的内容中,然后再返回给浏览器
+
+作用:
+    在服务端来操作文件,可能是需要将浏览器上传的图片保存到服
+    务器,也可能是需要将服务器的资源读取之后返回给浏览器
+
+代码步骤:
+    1.导入 fs 核心模块
+    2.使用相应的方法来写入文件、读取文件等操作
+
+注意点:
+    目录 fs它是不会自动帮我们创建的需要我们自己手工创建
+    文件如果不存在,调用writeFile与appendFile方法会自动帮
+    我们创建
+
+
+    NodeJS核心模块之Path模块
+作用:操作文件的路径,为文件操作服务
+
+常用的几个函数:
+    path.join(第一个路径,第二个路径) : 拼接路径
+
+    NodeJS核心模块之Global模块
+作用:全局共享的,不需要导入模块即可以使用
+
+常用的属性:
+    __dirname : 文件所在的文件夹路径
+    __filename : 文件所在的路径
+    require() : 导入需要的模块
+    module : 自定义模块时用到
+    exports : 自定义模块时用到
+
+NodeJS核心模块之Net模块
+ Net模块可用于创建Socket服务器或Socket客户端。NodeJS 的数据通信，最基础的两个模块是 Net 和 Http，前者是基于 Tcp 的封装，后者本质还是 Tcp 层，只不过做了比较多的数据封装，我们视为表现层
+
+（1），TCP/IP------TPC/IP协议是传输层协议，主要解决数据如何在网络中传输。
+
+　　（2），Socket------socket则是对TCP/IP协议的封装和应用(程序层面)。
+
+　　（3），Http------HTTP是应用层协议，主要解决如何包装数据。
+
+　　（4），网络七层模型------物理层、数据链路层、网络层、传输层、会话层、表示层和应用层。
+
+　　总结一下：Socket是对TCP/IP协议的封装，Socket本身并不是协议，而是一个调用接口(API)。
+
+　　从而形成了我们知道的一些最基本的函数接口，比如Create、Listen、Connect、Accept、Send、Read和Write等等。
+
+　　TCP/IP只是一个协议栈，就像操作系统的运行机制一样，必须要具体实现，同时还要提供对外的操作接口
+
+　　实际上，传输层的TCP是基于网络层的IP协议的，而应用层的HTTP协议又是基于传输层的TCP协议的，而Socket本身不算是协议，就像上面所说，它只是提供了一个针对TCP或者UDP编程的接口。
+
+
+
+Node核心模块之fs
+
+Node.js中文件I/O由标准POSIX函数包装后提供，每一个方法都有同步和异步两种形式，使用同步形式时，异常会被立即抛出，可以使用try/catch进行捕获处理，使用异步形式时，完成回调为最后一个参数，第一个参数为异常，并且可以为空.
+
+fs模块主要分为文件监控，文件流，文件信息
+
+fs模块方法介绍，方法结尾为Sync的为同步方法，反之为异步方法，异步方法会有一个回掉函数，且为最后一个参数，很多方法与linux中的文件方法一样
+
+方法中参数介绍
+
+fd: 整数
+file：文件
+path：路径
+data：数据
+callback：回掉函数
